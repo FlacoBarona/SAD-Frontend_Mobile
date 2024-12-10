@@ -12,6 +12,6 @@ export class LoginPage {
 
   login(): void {
     this.authService.login();
-    this.router.navigate(['folder/inbox']); // Redirigir al home después de iniciar sesión
+    this.router.navigate(['/home-page']); // Redirigir al home después de iniciar sesión
   }
 }
