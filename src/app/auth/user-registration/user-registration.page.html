@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="register-container">
+    <img src="assets/images/logo.jpeg" alt="Logo Ecuavías" class="logo" />
+    <h1>Registro</h1>
+    <form (ngSubmit)="register()">
+      <!-- Nombre Completo -->
+      <ion-item>
+        <ion-label position="stacked">Nombre Completo</ion-label>
+        <ion-input type="text" placeholder="Tu nombre completo" [(ngModel)]="nombreCompleto" name="nombreCompleto" required></ion-input>
+      </ion-item>
+
+      <!-- Correo Electrónico -->
+      <ion-item>
+        <ion-label position="stacked">Correo Electrónico</ion-label>
+        <ion-input type="email" placeholder="ejemplo@correo.com" [(ngModel)]="correo" name="correo" required></ion-input>
+      </ion-item>
+
+      <!-- Contraseña -->
+      <ion-item>
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input type="password" placeholder="Tu contraseña" [(ngModel)]="contrasena" name="contraseña" required></ion-input>
+      </ion-item>
+
+      <!-- Confirmar Contraseña -->
+      <ion-item>
+        <ion-label position="stacked">Confirmar Contraseña</ion-label>
+        <ion-input type="password" placeholder="Repite tu contraseña" [(ngModel)]="confirmarContrasena" name="confirmarContraseña" required></ion-input>
+      </ion-item>
+
+      <!-- Tipo de Documento -->
+      <ion-item>
+        <ion-label position="stacked">Tipo de Documento</ion-label>
+        <ion-select [(ngModel)]="tipoDocumento" name="tipoDocumento" placeholder="Selecciona una opción" required>
+          <ion-select-option value="cedula">Cédula</ion-select-option>
+          <ion-select-option value="pasaporte">Pasaporte</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Número de Documento -->
+      <ion-item>
+        <ion-label position="stacked">Número de Documento</ion-label>
+        <ion-input type="text" placeholder="Número de cédula o pasaporte" [(ngModel)]="numeroDocumento" name="numeroDocumento" required pattern="^[0-9]+$"></ion-input>
+      </ion-item>
+
+      <!-- Fecha de Nacimiento -->
+      <ion-item>
+        <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+        <ion-input
+          [(ngModel)]="fechaNacimientoValue"
+          [placeholder]="fechaNacimientoValue || 'Seleccionar Fecha'"
+          readonly
+          (click)="toggleDatePicker()"
+          required>
+        </ion-input>
+        <div *ngIf="isDatePickerVisible">
+          <ion-datetime
+            [showDefaultButtons]="false"
+            (ionChange)="onDateSelected($event)"
+            presentation="date"
+            display-format="DD/MM/YYYY">
+          </ion-datetime>
+        </div>
+        <ion-button fill="clear" slot="end" (click)="toggleDatePicker()">
+          <ion-icon name="calendar-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <!-- Número de Celular -->
+      <ion-item>
+        <ion-label position="stacked">Número de Celular</ion-label>
+        <ion-input type="tel" placeholder="09xxxxxxxx" [(ngModel)]="numeroCelular" name="numeroCelular" required pattern="^[0-9]{10}$"></ion-input>
+      </ion-item>
+
+      <!-- Botón de Registro -->
+      <ion-button expand="block" class="register-button" type="submit" [disabled]="!formularioValido()">Registrarse</ion-button>
+      <div class="extra-links">
+        <ion-text>
+          <a href="/login">¿Ya tienes cuenta? Inicia sesión</a>
+        </ion-text>
+      </div>
+    </form>
+    
+  </div>
+</ion-content>
