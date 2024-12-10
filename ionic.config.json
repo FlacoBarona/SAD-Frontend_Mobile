@@ -1,0 +1,7 @@
+{
+  "name": "SAD-Mobile-Frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
