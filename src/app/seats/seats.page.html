@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Selección de asientos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="icon-container">
+    <ion-icon name="bus" size="large"></ion-icon>
+  </div>
+
+  <div class="seat-grid">
+    <div class="seat" *ngFor="let seat of seats" [ngClass]="{'selected': seat.selected}" (click)="selectSeat(seat)">
+      {{ seat.number }}
+    </div>
+  </div>
+
+  <ion-button expand="block" (click)="continue()">Continuar</ion-button>
+</ion-content>
