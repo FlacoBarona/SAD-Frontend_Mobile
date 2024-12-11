@@ -1,0 +1,113 @@
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .search-container img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.5);
+  }
+  
+  
+  form {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  ion-item {
+    --background: transparent;
+    --border-color: transparent; 
+  }
+  
+  ion-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  ion-searchbar {
+    --background: rgba(255, 255, 255, 0.2);
+    --placeholder-color: rgba(255, 255, 255, 0.6);
+    --color: #ffffff;
+    border-radius: 8px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .search-button {
+    grid-column: 1 / -1;
+    background: linear-gradient(45deg, #f64e60, #e02f3c);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+    max-width: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    align-self: center; /* Asegura que el botón quede centrado */
+  }
+  
+  .search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .trips-list {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 20px;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .trips-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+    color: #ffffff;
+  }
+  
+  ion-item {
+    background: transparent;
+    margin: 5px 0;
+    border-radius: 10px;
+  }
+  
+  ion-label h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  ion-label p {
+    font-size: 0.85rem;
+    color: #dddddd;
+  }
+  
