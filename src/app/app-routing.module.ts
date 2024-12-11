@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'home-page',
     loadChildren: () => import('./home-page/home-page.module').then( m => m.HomePagePageModule)
   },
+  {
+    path: 'seats',
+    loadChildren: () => import('./seats/seats.module').then( m => m.SeatsPageModule)
+  },
 
 ];
 

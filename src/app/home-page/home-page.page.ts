@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.page.scss'],
 })
 export class HomePagePage implements OnInit {
-  constructor() { }
+  constructor(private router: Router) { }
   viaje: string = ''; // El término que se va a buscar
   trips = [
     { origen: 'Madrid', destino: 'Barcelona', fecha: '2024-12-20' },
@@ -28,6 +29,10 @@ export class HomePagePage implements OnInit {
         trip.destino.toLowerCase().includes(this.viaje.toLowerCase())
       );
     }
+  }
+
+  asientos(){
+    this.router.navigate(['/seats']);
   }
 
   ngOnInit() {}
