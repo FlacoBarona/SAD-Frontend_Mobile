@@ -1,5 +1,11 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Metodo de Pago</ion-title>
+  </ion-toolbar>
+</ion-header>
 <div class="modal">
 <form class="form">
+  <img src="assets/images/fondo.jpg" />
   <div class="payment--options">
     <ion-button color="gray" name="paypal" type="button">
       <svg xml:space="preserve" viewBox="0 0 124 33" height="33px" width="124px" y="0px" x="0px" id="Layer_1" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
@@ -38,33 +44,30 @@
 </clipPath>
 </defs>
 </svg>
-    </ion-button>
+</ion-button>
+</div>
+<div class="separator">
+  <hr class="line">
+  <p>or pay using credit card</p>
+  <hr class="line">
+</div>
+<div class="credit-card-info--form">
+  <div class="input_container">
+    <ion-label for="password_field" class="input_label">Card holder full name</ion-label>
+    <ion-input id="password_field" class="input_field" type="text" name="input-name" title="Inpit title" placeholder="Ingrese nombre del propietario"></ion-input>
   </div>
-  <div class="separator">
-    <hr class="line">
-    <p>or pay using credit card</p>
-    <hr class="line">
+  <div class="input_container">
+    <ion-label for="password_field" class="input_label">Card Number</ion-label>
+    <ion-input id="password_field" class="input_field" type="number" name="input-name" title="Inpit title" placeholder="0000 0000 0000 0000"></ion-input>
   </div>
-    <form class="credit-card-info--form">
-      <ion-item>
-        <ion-label position="floating">Card holder full name</ion-label>
-        <ion-input id="card-holder" type="text" name="input-name" placeholder="Nombre Completo" required></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label position="floating">Card Number</ion-label>
-        <ion-input id="card-number" type="number" name="card-number" placeholder="0000 0000 0000 0000" required></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label position="floating">Expiry Date</ion-label>
-        <ion-input id="expiry-date" type="text" name="expiry-date" placeholder="MM/YY" required></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label position="floating">CVV</ion-label>
-        <ion-input id="cvv" type="number" name="cvv" placeholder="CVV" required></ion-input>
-      </ion-item>
-  
-      <ion-button expand="full" class="purchase--btn">Checkout</ion-button>
-    </form>
+  <div class="input_container">
+    <label for="password_field" class="input_label">Expiry Date / CVV</label>
+    <div class="split">
+    <ion-input id="password_field" class="input_field" type="text" name="input-name" title="Expiry Date" placeholder="01/23"></ion-input>
+    <ion-input id="password_field" class="input_field" type="number" name="cvv" title="CVV" placeholder="CVV"></ion-input>
+  </div>
+  </div>
+</div>
+  <ion-button color="gary" class="purchase--btn">Pagar</ion-button>
+</form>
+</div>
