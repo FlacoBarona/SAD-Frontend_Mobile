@@ -1,20 +1,27 @@
 .icon-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .seat-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
-  padding: 10px;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  
+  grid-template-rows: repeat(
+    5,
+    1fr
+  ); /* Ajustar el número de filas según sea necesario */
 }
 
 .seat {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,11 +29,63 @@
   border-radius: 5px;
   font-size: 16px;
   font-weight: bold;
+  color: #333;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  &.selected {
+    background: #007bff;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+  }
+
+  /* Asientos en una fila doble */
+  &:nth-child(odd) {
+    margin-right: 10px; /* Separar las filas de asientos */
+  }
 }
 
-.seat.selected {
-  background: #007bff;
+ion-button {
+  margin-top: 20px;
+  background-color: #007bff;
   color: white;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 30px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+  }
+
+  &:active {
+    background-color: #004085;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
+    transition: background-color 0.1s, box-shadow 0.1s, transform 0.1s;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+  }
 }
