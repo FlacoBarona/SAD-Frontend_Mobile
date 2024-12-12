@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment.prod';
 
+
 const supabaseUrl = environment.supabaseUrl;
 const supabaseKey = environment.supabaseKey;
 @NgModule({

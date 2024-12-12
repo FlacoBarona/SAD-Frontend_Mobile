@@ -37,6 +37,8 @@
           <ion-label>
             <h2>{{ trip.origin }} → {{ trip.destination }}</h2>
             <p>Fecha: {{ trip.departure_time | date: 'shortDate' }}</p>
+            <p>Tipo: {{ trip.type }}</p>
+            <p>Precio: {{ trip.price | currency }}</p>
           </ion-label>
         </ion-item>
       </ion-list>
