@@ -14,25 +14,36 @@
           <ion-searchbar 
             [(ngModel)]="viaje" 
             name="origen" 
-            placeholder="Buscar por origen o destino">
+            placeholder="Buscar viaje">
           </ion-searchbar>
         </ion-item>
       </div>
       <ion-item class="button-container">
-        <ion-button expand="full" color="red" class="search-button" type="submit">Buscar</ion-button>
+        <ion-button expand="full" color="red" class="search-button" type="submit">
+          Buscar
+        </ion-button>
       </ion-item>
     </form>
 
-    <div class="trips-list">
-      <ion-label position="stacked" class="trips-title">Viajes programados</ion-label>
+    <div *ngIf="loading" class="loading-container">
+      <ion-spinner></ion-spinner>
+      <p>Cargando viajes...</p>
+    </div>
+
+    <div class="trips-list" *ngIf="!loading && filteredTrips.length > 0">
+      <ion-label position="stacked" class="trips-title">Viajes encontrados</ion-label>
       <ion-list>
-        <ion-item *ngFor="let trip of filteredTrips" (click)="asientos()">
+        <ion-item *ngFor="let trip of filteredTrips" (click)="selectTrip(trip)">
           <ion-label>
-            <h2>{{ trip.origen }} → {{ trip.destino }}</h2>
-            <p>Fecha: {{ trip.fecha }}</p>
+            <h2>{{ trip.origin }} → {{ trip.destination }}</h2>
+            <p>Fecha: {{ trip.departure_time | date: 'shortDate' }}</p>
           </ion-label>
         </ion-item>
       </ion-list>
+    </div>
+
+    <div *ngIf="!loading && filteredTrips.length === 0" class="no-results">
+      <p>No se encontraron viajes.</p>
     </div>
   </div>
 </ion-content>

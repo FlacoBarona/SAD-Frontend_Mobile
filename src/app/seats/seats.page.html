@@ -5,18 +5,31 @@
     </ion-buttons>
     <ion-title>Selección de asientos</ion-title>
   </ion-toolbar>
-  
 </ion-header>
 
 <ion-content class="ion-padding" [fullscreen]="true">
-  
   <div class="icon-container">
     <img src="assets/images/fondo.jpg" />
     <ion-icon name="bus" size="large"></ion-icon>
   </div>
 
-  <div class="seat-grid">
-    <div class="seat" *ngFor="let seat of seats" [ngClass]="{'selected': seat.selected}" (click)="selectSeat(seat)">
+  <!-- Mostrar indicador de carga -->
+  <div *ngIf="loading" class="loading-container">
+    <ion-spinner></ion-spinner>
+    <p>Cargando asientos...</p>
+  </div>
+
+  <div *ngIf="!loading && seats.length === 0" class="no-seats">
+    <p>No hay asientos disponibles.</p>
+  </div>
+
+  
+  <div class="seat-grid" *ngIf="!loading && seats.length > 0">
+    <div 
+      class="seat" 
+      *ngFor="let seat of seats" 
+      [ngClass]="{'selected': seat.selected}" 
+      (click)="selectSeat(seat)">
       {{ seat.number }}
     </div>
   </div>

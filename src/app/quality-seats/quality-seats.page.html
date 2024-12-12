@@ -11,48 +11,41 @@
   <div class="icon-container">
     <img src="assets/images/fondo.jpg" />
 
-  <ion-card>
-    <ion-card-content>
-      <h3>IDA SELECCIONADA</h3>
-      <p>mar., 04 nov. 8:00 A.M. - 12:00 P.M.</p>
-      <p>Quito, Terminal Quitumbe - Ambato, Terminal del Sur</p>
-      <p>Coop. San Francisco</p>
-      <p><strong>8h. 05min.</strong></p>
-    </ion-card-content>
-  </ion-card>
+    <ion-card *ngIf="selectedFrequency">
+      <ion-card-content>
+        <h3>IDA SELECCIONADA</h3>
+        <p>{{ selectedFrequency.origin }} - {{ selectedFrequency.destination }}</p>
+        <p>Fecha: {{ selectedFrequency.departure_time | date: 'short' }}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Condiciones de clase</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Normal</p>
+        <ion-icon name="wifi"></ion-icon> Wifi gratis
+        <p>+0 US$</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Asientos seleccionados</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let seat of seats" (click)="selectSeat(seat)">
+            <ion-label>
+              <h2>{{ seat.type }}</h2>
+              <p>{{ seat.status ? 'Disponible' : 'Ocupado' }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
 
-  <!-- Condiciones de clase -->
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Condiciones de clase</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>Clase Standard</p>
-      <ion-icon name="wifi"></ion-icon> Wifi gratis
-      <p>+0 US$</p>
-      <ion-badge color="medium">Solo hay 1 clase disponible para este trayecto</ion-badge>
-    </ion-card-content>
-  </ion-card>
-
-  <!-- Selección de tarifa -->
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Selecciona la tarifa</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item lines="none">
-        <ion-label>Promoción</ion-label>
-        <ion-badge color="medium">No reembolsable</ion-badge>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-label>Admite cambios</ion-label>
-        <ion-badge color="medium">+0 US$</ion-badge>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-label><strong>Estándar</strong></ion-label>
-        <ion-badge color="secondary">+7,91 US$</ion-badge>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
-</div>
+    <ion-footer>
+      <ion-button expand="full" color="black" (click)="goToPayment()">Pagar</ion-button>
+    </ion-footer>
+  </div>
 </ion-content>

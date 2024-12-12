@@ -9,19 +9,16 @@
     <img src="assets/images/logo.jpeg" alt="Logo Ecuavías" class="logo" />
     <h1>Registro</h1>
     <form (ngSubmit)="register()">
-      <!-- Nombre Completo -->
       <ion-item>
         <ion-label position="stacked">Nombre Completo</ion-label>
         <ion-input type="text" placeholder="Tu nombre completo" [(ngModel)]="nombreCompleto" name="nombreCompleto" required></ion-input>
       </ion-item>
 
-      <!-- Correo Electrónico -->
       <ion-item>
         <ion-label position="stacked">Correo Electrónico</ion-label>
         <ion-input type="email" placeholder="ejemplo@correo.com" [(ngModel)]="correo" name="correo" required></ion-input>
       </ion-item>
 
-      <!-- Contraseña -->
       <ion-item>
         <ion-label position="stacked">Contraseña</ion-label>
         <ion-input type="password" placeholder="Tu contraseña" [(ngModel)]="contrasena" name="contraseña" required></ion-input>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FrequencyService } from '../services/frequencies/frequency.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,33 +8,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.page.scss'],
 })
 export class HomePagePage implements OnInit {
-  constructor(private router: Router) { }
-  viaje: string = ''; // El término que se va a buscar
-  trips = [
-    { origen: 'Madrid', destino: 'Barcelona', fecha: '2024-12-20' },
-    { origen: 'Sevilla', destino: 'Valencia', fecha: '2024-12-25' },
-    { origen: 'Madrid', destino: 'Valencia', fecha: '2024-12-22' },
-    { origen: 'Barcelona', destino: 'Sevilla', fecha: '2024-12-21' }
-  ];
+  viaje: string = ''; 
+  filteredTrips: any[] = []; 
+  loading: boolean = false; 
 
-  filteredTrips = [...this.trips];
+  constructor(
+    private router: Router,
+    private frequencyService: FrequencyService
+  ) {}
 
-  submitForm() {
-    if (this.viaje.trim() === '') {
-      // Si el campo de búsqueda está vacío, mostramos todos los viajes
-      this.filteredTrips = [...this.trips];
-    } else {
-      // Filtrar viajes por el texto ingresado en 'viaje'
-      this.filteredTrips = this.trips.filter((trip) =>
-        trip.origen.toLowerCase().includes(this.viaje.toLowerCase()) ||
-        trip.destino.toLowerCase().includes(this.viaje.toLowerCase())
-      );
+  async submitForm() {
+    this.loading = true; 
+    try {
+      if (this.viaje.trim() === '') {
+        this.filteredTrips = await this.frequencyService.getAllFrequenciesWithStops();
+      } else {
+        this.filteredTrips = await this.frequencyService.searchFrequenciesWithStops(this.viaje);
+      }
+    } catch (error) {
+      console.error('Error fetching trips:', error);
+      alert('Error fetching trips: ' + error.message);
+    } finally {
+      this.loading = false; 
     }
   }
 
-  asientos(){
-    this.router.navigate(['/seats']);
+  selectTrip(frequency: any) {
+    localStorage.setItem('selectedFrequency', JSON.stringify(frequency));
+    this.router.navigate(['/seats']);  
   }
+  
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.submitForm();
+  }
 }
