@@ -1,0 +1,96 @@
+ion-header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+ion-toolbar {
+  --background: #333;
+  --color: #fff;
+}
+
+ion-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ion-content {
+  padding: 0;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.3);
+}
+
+.ticket-details {
+  position: relative;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semi-transparente */
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  z-index: 1;
+
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #f2f2f2;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: #f2f2f2;
+    }
+  }
+}
+
+.qr-code {
+  text-align: center;
+  margin: 20px;
+
+  img {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+ion-button {
+  margin: 20px;
+}
+.center-button {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin-top: 20px; 
+}

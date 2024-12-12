@@ -15,7 +15,7 @@ export class SeatsPage implements OnInit {
   constructor(private router: Router, private seatService: SeatService) {}
 
   async ngOnInit() {
-    this.selectedFrequency = JSON.parse(localStorage.getItem('selectedFrequency')!);  // Cargar la frecuencia seleccionada
+    this.selectedFrequency = JSON.parse(localStorage.getItem('selectedFrequency')!); 
     await this.loadSeats();
   }
 
@@ -47,7 +47,7 @@ export class SeatsPage implements OnInit {
       alert('Por favor, selecciona al menos un asiento.');
       return;
     }
-    localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));  // Guardar los asientos seleccionados
-    this.router.navigate(['/quality-seats']);  // Navegar a la página de calidad de asientos
+    localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));  
+    this.router.navigate(['/quality-seats']);  
   }
 }

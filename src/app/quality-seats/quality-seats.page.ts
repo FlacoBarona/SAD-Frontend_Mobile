@@ -43,7 +43,6 @@ export class QualitySeatsPage implements OnInit {
       this.selectedFrequency = await this.frequencyService.getFrequencyById(frequencyId);
     } catch (error) {
       console.error('Error fetching frequency:', error);
-      alert('Error al cargar la frecuencia: ' + error.message);
     } finally {
       this.loadingFrequency = false;
     }

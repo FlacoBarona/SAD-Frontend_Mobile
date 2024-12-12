@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'method-of-payment',
     loadChildren: () => import('./method-of-payment/method-of-payment.module').then( m => m.MethodOfPaymentPageModule)
+  },  {
+    path: 'ticket-information',
+    loadChildren: () => import('./ticket-information/ticket-information.module').then( m => m.TicketInformationPageModule)
   },
+
 
 ];
 

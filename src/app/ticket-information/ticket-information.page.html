@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Información del Ticket</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="background-image">
+    <img src="assets/images/fondo.jpg" />
+  </div>
+  <div *ngIf="ticketDetails" class="ticket-details">
+    <h2>Detalles del Viaje</h2>
+    <p><strong>Origen:</strong> {{ ticketDetails.origin }}</p>
+    <p><strong>Destino:</strong> {{ ticketDetails.destination }}</p>
+    <p><strong>Fecha:</strong> {{ ticketDetails.departure_time | date: 'shortDate' }}</p>
+    <p><strong>Tipo:</strong> {{ ticketDetails.type }}</p>
+    <p><strong>Precio:</strong> {{ ticketDetails.price | currency }}</p>
+    <p><strong>Asientos Seleccionados:</strong> {{ seatNumbers }}</p>
+
+    <h3>Código QR:</h3>
+    <div class="qr-code">
+      <img [src]="qrCode" alt="Código QR" *ngIf="qrCode; else noQRCode" />
+    </div>
+    <ng-template #noQRCode>
+      <p>No se pudo generar el código QR.</p>
+    </ng-template>
+  </div>
+  <div class="center-button">
+    <ion-button (click)="Inicio()">Inicio</ion-button>
+  </div>
+  </ion-content>

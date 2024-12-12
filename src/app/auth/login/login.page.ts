@@ -52,6 +52,7 @@ export class LoginPage {
       .login(this.email, this.password)
       .then(() => {
         this.showToast('Inicio de sesión exitoso', 'success');
+        localStorage.setItem('userEmail', this.email);
         this.router.navigate(['/home-page']); 
       })
       .catch((error) => {
