@@ -6,13 +6,11 @@
 
 <ion-content class="ion-padding">
   <div class="login-container">
-    <!-- Logo de la empresa -->
     <img src="assets/images/logo.jpeg" alt="Logo Ecuavías" class="logo" />
 
     <h1>Inicio de Sesión</h1>
 
-    <form>
-      <!-- Campo de correo electrónico -->
+    <form (ngSubmit)="login()">
       <div class="field">
         <svg
           viewBox="0 0 16 16"
@@ -30,11 +28,13 @@
           type="email"
           class="input-field"
           placeholder="Ingresa tu correo"
+          [(ngModel)]="email"
+          name="email"
           autocomplete="off"
+          required
         ></ion-input>
       </div>
 
-      <!-- Campo de contraseña -->
       <div class="field">
         <svg
           viewBox="0 0 16 16"
@@ -52,17 +52,20 @@
           type="password"
           class="input-field"
           placeholder="Ingresa tu contraseña"
+          [(ngModel)]="password"
+          name="password"
+          required
         ></ion-input>
       </div>
 
-      <!-- Botones -->
       <div class="btn">
-        <ion-button expand="block" color="black" class="button1" type="submit" (click)="login()">Iniciar Sesión</ion-button>
+        <ion-button expand="block" color="black" class="button1" type="submit">Iniciar Sesión</ion-button>
         <ion-button expand="block" color="black" class="button2" routerLink="/user-registration">Registrarse</ion-button>
       </div>
-      <ion-text>
-      <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
-      </ion-text>
     </form>
+
+    <ion-text>
+      <a routerLink="/forgot-password">¿Olvidaste tu contraseña?</a>
+    </ion-text>
   </div>
 </ion-content>
