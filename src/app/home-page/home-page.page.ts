@@ -33,9 +33,11 @@ export class HomePagePage implements OnInit {
     }
   }
 
-  asientos() {
-    this.router.navigate(['/seats']);
+  selectTrip(frequency: any) {
+    localStorage.setItem('selectedFrequency', JSON.stringify(frequency));
+    this.router.navigate(['/seats']);  
   }
+  
 
   ngOnInit() {
     this.submitForm();

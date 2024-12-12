@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentService } from '../services/payments/payment.service'; 
 
 @Component({
   selector: 'app-method-of-payment',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MethodOfPaymentPage implements OnInit {
 
-  constructor() { }
+  payments: any[] = [];  
+
+  constructor(private paymentService: PaymentService) { }
 
   ngOnInit() {
+    this.fetchPayments(); 
+  }
+
+  async fetchPayments() {
+    try {
+      this.payments = await this.paymentService.getAllPayments();
+    } catch (error) {
+      console.error('Error fetching payments:', error);
+    }
   }
 
 }
