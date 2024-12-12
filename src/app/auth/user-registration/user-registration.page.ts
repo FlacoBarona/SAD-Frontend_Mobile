@@ -73,25 +73,37 @@ export class UserRegistrationPage implements OnInit {
   register() {
     if (this.formularioValido()) {
       this.showToast('Registrando usuario...', 'primary');
+  
+      const userDetails = {
+        document_type: this.tipoDocumento,
+        document_number: this.numeroDocumento,
+        first_name: this.nombreCompleto.split(' ')[0] || '',
+        second_name: this.nombreCompleto.split(' ')[1] || null,
+        last_name: this.nombreCompleto.split(' ')[2] || '',
+        second_last_name: this.nombreCompleto.split(' ')[3] || null,
+        birth_date: this.fechaNacimientoValue,
+        phone_number: this.numeroCelular,
+        role: 'user',
+        status: 'active',
+      };
+  
       this.authService
-        .register(
-          this.correo,
-          this.contrasena,
-          this.nombreCompleto,
-          this.tipoDocumento,
-          this.numeroDocumento,
-          this.fechaNacimientoValue,
-          this.numeroCelular
-        )
+        .register(this.correo, this.contrasena, userDetails)
         .then(() => {
           this.showToast('Registro exitoso!', 'success');
-          this.router.navigate(['/login']); 
+          this.router.navigate(['/login']);
         })
         .catch((error) => {
           this.showAlert('Error', `Error al registrar: ${error.message}`);
         });
     } else {
-      this.showAlert('Formulario inválido', 'Por favor completa todos los campos y asegúrate de que las contraseñas coincidan.');
+      this.showAlert(
+        'Formulario inválido',
+        'Por favor completa todos los campos y asegúrate de que las contraseñas coincidan.'
+      );
     }
   }
 }
+
+  
+    
