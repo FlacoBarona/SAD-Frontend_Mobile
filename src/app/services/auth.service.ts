@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
+import { environment } from 'src/environments/environment.prod';
+
+const supabaseUrl = environment.supabaseUrl;
+const supabaseKey = environment.supabaseKey;
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +13,8 @@ export class AuthService {
 
   constructor() {
     this.supabase = createClient(
-      'https://urwinhkuekffjuhxgull.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyd2luaGt1ZWtmZmp1aHhndWxsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk2MjY3ODMsImV4cCI6MjA0NTIwMjc4M30.QaQnVhHLy4iY8PpBuuA8jDgNydwFaEwl7HmuMfHuobQ'
+      supabaseUrl,
+      supabaseKey
     );
   }
 
