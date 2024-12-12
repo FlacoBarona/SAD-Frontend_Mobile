@@ -51,23 +51,24 @@
   <p>or pay using credit card</p>
   <hr class="line">
 </div>
-<div class="credit-card-info--form">
-  <div class="input_container">
-    <ion-label for="password_field" class="input_label">Card holder full name</ion-label>
-    <ion-input id="password_field" class="input_field" type="text" name="input-name" title="Inpit title" placeholder="Ingrese nombre del propietario"></ion-input>
+<form [formGroup]=" creditCardForm" (ngSubmit)="onSubmit()">
+  <div class="credit-card-info--form">
+    <div class="input_container">
+      <ion-label for="name" class="input_label">Card holder full name</ion-label>
+      <ion-input id="name" class="input_field" type="text" formControlName="name" placeholder="Ingrese nombre del propietario"></ion-input>
+    </div>
+    <div class="input_container">
+      <ion-label for="cardNumber" class="input_label">Card Number</ion-label>
+      <ion-input id="cardNumber" class="input_field" type="number" formControlName="cardNumber" placeholder="0000 0000 0000 0000"></ion-input>
+    </div>
+    <div class="input_container">
+      <label for="expiryDate" class="input_label">Expiry Date / CVV</label>
+      <div class="split">
+        <ion-input id="expiryDate" class="input_field" type="text" formControlName="expiryDate" placeholder="01/23"></ion-input>
+        <ion-input id="cvv" class="input_field" type="number" formControlName="cvv" placeholder="CVV"></ion-input>
+      </div>
+    </div>
   </div>
-  <div class="input_container">
-    <ion-label for="password_field" class="input_label">Card Number</ion-label>
-    <ion-input id="password_field" class="input_field" type="number" name="input-name" title="Inpit title" placeholder="0000 0000 0000 0000"></ion-input>
-  </div>
-  <div class="input_container">
-    <label for="password_field" class="input_label">Expiry Date / CVV</label>
-    <div class="split">
-    <ion-input id="password_field" class="input_field" type="text" name="input-name" title="Expiry Date" placeholder="01/23"></ion-input>
-    <ion-input id="password_field" class="input_field" type="number" name="cvv" title="CVV" placeholder="CVV"></ion-input>
-  </div>
-  </div>
-</div>
-  <ion-button color="gary" class="purchase--btn" routerLink="/ticket-information">Pagar</ion-button>
+
+  <ion-button [disabled]="creditCardForm.invalid" color="gary" class="purchase--btn" type="submit">Pagar</ion-button>
 </form>
-</div>
