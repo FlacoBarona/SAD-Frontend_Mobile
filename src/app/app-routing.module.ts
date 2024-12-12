@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'quality-seats',
     loadChildren: () => import('./quality-seats/quality-seats.module').then( m => m.QualitySeatsPageModule)
   },
+  {
+    path: 'method-of-payment',
+    loadChildren: () => import('./method-of-payment/method-of-payment.module').then( m => m.MethodOfPaymentPageModule)
+  },
 
 ];
 
